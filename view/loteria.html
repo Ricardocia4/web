@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Sergey Pozhilov (GetTemplate.com)">
+    
+    <title>TradiJuegos MX</title>
+    
+    <link rel="shortcut icon" href="../images/logo.webp">
+    <link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css" media="screen" >
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <style>
+        /* Styling for the 4x4 grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+		.prev {
+		    width: 188px; /* Ajusta el ancho de la imagen */
+    		height: 330px; /* Ajusta la altura de la imagen */
+    		object-fit: cover; /* Esto asegura que la imagen se ajuste correctamente al tamaño */
+		}
+
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .image-grid img:hover {
+            transform: scale(1.05);
+        }
+
+        .carta {
+            width: 100%;
+            aspect-ratio: 2 / 3;
+        }
+
+        p {
+            font-size: large;
+            font-family: 'Trebuchet MS', Arial, sans-serif;
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top headroom">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../index.html"><img src="../images/logoheader.webp" width="200px" height="80px" alt="Logo"></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="active"><a href="../index.html">Inicio</a></li>
+                    <li><a href="../view/about.html">Sobre Nosotros</a></li>
+                    <li><a href="../view/juegos.html">Juegos Populares</a></li>
+                    <li><a href="#">Lotería</a></li>
+                    <li><a class="btn" href="../view/signin.html">SIGN IN / SIGN UP</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <header id="head" class="secondary"></header>
+
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="active">Lotería</li>
+        </ol>
+
+        <div class="row">
+            <article class="col-sm-9 maincontent">
+                <header class="page-header">
+                    <h1 class="page-title">Conoce el Juego de "La Lotería"</h1>
+                </header>
+
+                <div class="row">
+                    <!-- Contenedor de las cartas -->
+                    <div class="col-md-6">
+                        <div class="row justify-content-center mb-3">
+                            <button onclick="cartas()" type="button" class="btn btn-primary btn-lg">Generar Nueva Carta</button>
+                        </div>
+						<br>
+
+                        <!-- Grid for images in 4x4 format -->
+                        <div class="image-grid">
+                            <img src="#" id="c1" class="carta" alt="Carta 1">
+                            <img src="#" id="c2" class="carta" alt="Carta 2">
+                            <img src="#" id="c3" class="carta" alt="Carta 3">
+                            <img src="#" id="c4" class="carta" alt="Carta 4">
+                            <img src="#" id="c5" class="carta" alt="Carta 5">
+                            <img src="#" id="c6" class="carta" alt="Carta 6">
+                            <img src="#" id="c7" class="carta" alt="Carta 7">
+                            <img src="#" id="c8" class="carta" alt="Carta 8">
+                            <img src="#" id="c9" class="carta" alt="Carta 9">
+                            <img src="#" id="c10" class="carta" alt="Carta 10">
+                            <img src="#" id="c11" class="carta" alt="Carta 11">
+                            <img src="#" id="c12" class="carta" alt="Carta 12">
+                            <img src="#" id="c13" class="carta" alt="Carta 13">
+                            <img src="#" id="c14" class="carta" alt="Carta 14">
+                            <img src="#" id="c15" class="carta" alt="Carta 15">
+                            <img src="#" id="c16" class="carta" alt="Carta 16">
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="col-md-6 text-center">
+                        <div class="alert alert-primary mt-3" role="alert">
+                            Previsualización de Carta
+                        </div>
+						<div class="row justify-content-center">
+							<img src="img/6.jpg" class="prev" id="prev">
+						</div>
+                        <div class="mt-3">
+                            <button onclick="play()" type="button" class="btn btn-secondary btn-lg">Escuchar Carta</button>
+                        </div>
+
+                        <div class="mt-3">
+                            <button onclick="consultar()" type="button" class="btn btn-success btn-lg">Consultar Números</button>
+                        </div>
+
+                        <div class="mt-4">
+                            <input type="number" id="i1" class="form-control d-inline w-25" min="0" max="3" value="0">
+                            <input type="number" id="i2" class="form-control d-inline w-25" min="0" max="3" value="0">
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <footer id="footer" class="top-space">
+        <div class="footer1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 widget">
+                        <h3 class="widget-title">Contacto</h3>
+                        <div class="widget-body">
+                            <p>+52 123456789<br>
+                                <a href="mailto:#">siii@gmail.com</a><br>
+                                Mérida, Yucatán, México 97166
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 widget">
+                        <h3 class="widget-title">Síguenos en nuestras redes sociales</h3>
+                        <div class="widget-body">
+                            <p class="follow-me-icons">
+                                <a href=""><i class="fa fa-facebook fa-2"></i></a>
+                                <a href=""><i class="fa fa-twitter fa-2"></i></a>
+                                <a href=""><i class="fa fa-instagram fa-2"></i></a>
+                                <a href=""><i class="fa fa-linkedin fa-2"></i></a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 widget">
+                        <h3 class="widget-title">Acerca De</h3>
+                        <div class="widget-body">
+                            <p>Esta página fue realizada por Ivan Guerra y Ricardo García para una práctica escolar</p>
+                            <p>Todos los derechos reservados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+<script src="../js/loteria.js"></script>
